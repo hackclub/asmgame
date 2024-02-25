@@ -18,10 +18,10 @@ const internalInstructions = {
         emulatorRegisters["*A"] = emulatorRegisters.ACC;
     },
     "wa": ()=>{
-        emulatorRegisters.A = emulatorRegisters.B;
+        emulatorRegisters.B = emulatorRegisters.A;
     },
     "wb": ()=>{
-        emulatorRegisters.B = emulatorRegisters.A;
+        emulatorRegisters.A = emulatorRegisters.B;
     },
     "ma": (value) => {
         emulatorRegisters.A = parseInt(value);
@@ -43,7 +43,8 @@ const puzzles = [
             "B": 0x5,
             "*A": "*",
             "ACC": "*"
-        }
+        },
+        expectedMemory: {}
     },
     {
         task: "Create an instruction to write the value of the A register to the memory address stored in the B register",
@@ -55,10 +56,13 @@ const puzzles = [
             "ACC": 0x0
         },
         expectedEndingRegisters: {
-            "A": 0x2,
+            "A": "*",
             "B": "*",
-            "*A": 0x5,
+            "*A": "*",
             "ACC": "*"
+        },
+        expectedMemory: {
+            0x2: 0x5
         }
     }
 ];
@@ -77,8 +81,17 @@ updatePuzzleDOM();
 var emulatorRegisters = {
     "A": 0x0,
     "B": 0x0,
-    "*A": 0x0,
+    "*A": 0x0 /*new Proxy(0, {
+        set: function(target, prop, value) {
+            target[prop] = value;
+            emulatorMemory[emulatorRegisters.A] = value;
+        }
+    })*/,
     "ACC": 0x0
+}
+var emulatorMemory = [];
+for (var i = 0; i < 4096; i++) {
+    emulatorMemory.push(0);
 }
 
 var isEscaped = false;
@@ -98,6 +111,7 @@ document.getElementById('definitions').addEventListener('keydown', function(e) {
     }
     isEscaped = false;
 });
+
 document.getElementById('run').addEventListener('click', ()=>{
     const instruction = document.getElementById('instruction-to-run').value;
     var definitions = document.getElementById('definitions').value+document.getElementById('default-definitions').value;
@@ -154,7 +168,10 @@ document.getElementById('run').addEventListener('click', ()=>{
     var correct = true;
     var wrongRegisters = [];
     var wrongRegistersValues = [];
+    var wrongMemory = [];
+    var wrongMemoryValues = [];
     var expectedEndingRegisters = puzzles[currentPuzzle].expectedEndingRegisters;
+    var expectedMemory = puzzles[currentPuzzle].expectedMemory;
     for (var register in emulatorRegisters) {
         if (emulatorRegisters[register] != expectedEndingRegisters[register]) {
             if (expectedEndingRegisters[register] == "*") {
@@ -165,12 +182,25 @@ document.getElementById('run').addEventListener('click', ()=>{
             wrongRegistersValues.push(emulatorRegisters[register]);
         }
     }
+    for (var memory in puzzles[currentPuzzle].expectedMemory) {
+        if (emulatorMemory[memory] != puzzles[currentPuzzle].expectedMemory[memory]) {
+            if (!expectedMemory[memory] || expectedMemory[memory] == "*") {
+                continue;
+            }
+            correct = false;
+            wrongMemory.push(`Memory address ${memory}`);
+            wrongMemoryValues.push(emulatorMemory[memory]);
+        }
+    }
     if (!correct) {
         var wrongText = "";
         for (var i = 0; i < wrongRegisters.length; i++) {
-            wrongText += `${wrongRegisters[i]}: ${wrongRegistersValues[i]} (expected ${expectedEndingRegisters[wrongRegisters[i]]}\n`;
+            wrongText += `${wrongRegisters[i]}: ${wrongRegistersValues[i]} (expected ${expectedEndingRegisters[wrongRegisters[i]]})\n`;
         }
-        alert(`Your solution is incorrect:\n${wrongText})`);
+        for (var i = 0; i < wrongMemory.length; i++) {
+            wrongText += `${wrongMemory[i]}: ${wrongMemoryValues[i]} (expected ${puzzles[currentPuzzle].expectedMemory[wrongMemory[i]]})\n`;
+        }
+        alert(`Your solution is incorrect:\n${wrongText}`);
         return;
     }
     alert("Your solution is correct!");
