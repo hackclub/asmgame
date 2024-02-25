@@ -1,0 +1,11 @@
+#definitions {
+    font: monospace;
+}
+
+#hint {
+    display: none;
+}
+
+#hint-box[type="checkbox"]:checked ~ #hint {
+    display: block;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Asmgame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="task">
+        Create an instruction to swap the A and B registers
+    </div>
+    <div id="hint-container">
+        <label for="hint-box">Hint: </label><input type="checkbox" name="hint-box" id="hint-box">
+        <div id="hint">
+            Use the la/lb instructions, the sa/sb instructions, and the wa/wb instructions.
+        </div>
+    </div>
+    Press escape to toggle focus in the textbox.<br>
+    <textarea name="definitions" id="definitions" cols="30" rows="10" autocapitalize="off" autocomplete="off" aria-autocomplete="none">
+sw { # Write your swap instruction here!
+
+}
+    </textarea>
+    <textarea name="default-definitions" id="default-definitions" cols="30" rows="10" autocapitalize="off" autocomplete="off" aria-autocomplete="none" disabled aria-disabled="true">
+la { # load the A register into the accumulator
+    IBS:la # use the in-built instruction la
+}
+lb { # load the B register into the accumulator
+    IBS:lb
+}
+ls { # load the *A register(value at the memory location A is pointing at) into the accumulator
+    IBS:ls
+}
+sa { # store the accumulator into the A register
+    IBS:sa
+}
+sb { # store the accumulator into the B register
+    IBS:sb
+}
+ss { # store the accumulator into the *A register
+    IBS:ss
+}
+wa { # store the A register into the B register, overwriting any previous value
+    IBS:wa
+}
+wb { # store the B register into the A register, overwriting any previous value
+    IBS:wb
+}
+    </textarea><br>
+    <label for="instruction-to-run">Instruction to run: </label><input type="text" name="instruction-to-run" id="instruction-to-run" value="sw">
+    <button type="submit" id="run">Run</button>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
