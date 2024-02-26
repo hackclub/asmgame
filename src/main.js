@@ -48,7 +48,7 @@ const puzzles = [
     },
     {
         task: "Create an instruction to write the value of the A register to the memory address stored in the B register",
-        hint: "Use the la instruction, the lb instruction, the sa instruction, and the ss instruction.",
+        hint: "Use the sw instruction, the lb instruction, and the ss instruction.",
         startingRegisters: {
             "A": 0x5,
             "B": 0x2,
@@ -78,17 +78,25 @@ function updatePuzzleDOM() {
 }
 updatePuzzleDOM();
 
-var emulatorRegisters = {
-    "A": 0x0,
-    "B": 0x0,
-    "*A": 0x0 /*new Proxy(0, {
-        set: function(target, prop, value) {
-            target[prop] = value;
+var emulatorRegisters = new Proxy({
+    A: 0x0,
+    B: 0x0,
+    "*A": 0x0,
+    ACC: 0x0
+}, {
+    set: function(target, prop, value) {
+        target[prop] = value;
+        if (prop == "*A") {
             emulatorMemory[emulatorRegisters.A] = value;
         }
-    })*/,
-    "ACC": 0x0
-}
+    },
+    get: function(target, prop) {
+        if (prop == "*A") {
+            return emulatorMemory[emulatorRegisters.A];
+        }
+        return target[prop];
+    }
+});
 var emulatorMemory = [];
 for (var i = 0; i < 4096; i++) {
     emulatorMemory.push(0);
@@ -182,9 +190,9 @@ document.getElementById('run').addEventListener('click', ()=>{
             wrongRegistersValues.push(emulatorRegisters[register]);
         }
     }
-    for (var memory in puzzles[currentPuzzle].expectedMemory) {
-        if (emulatorMemory[memory] != puzzles[currentPuzzle].expectedMemory[memory]) {
-            if (!expectedMemory[memory] || expectedMemory[memory] == "*") {
+    for (var memory in expectedMemory) {
+        if (emulatorMemory[memory] != expectedMemory[memory]) {
+            if (!expectedMemory[memory] || expectedMemory[memory] == "*" || expectedMemory[memory] == undefined) {
                 continue;
             }
             correct = false;
@@ -198,7 +206,7 @@ document.getElementById('run').addEventListener('click', ()=>{
             wrongText += `${wrongRegisters[i]}: ${wrongRegistersValues[i]} (expected ${expectedEndingRegisters[wrongRegisters[i]]})\n`;
         }
         for (var i = 0; i < wrongMemory.length; i++) {
-            wrongText += `${wrongMemory[i]}: ${wrongMemoryValues[i]} (expected ${puzzles[currentPuzzle].expectedMemory[wrongMemory[i]]})\n`;
+            wrongText += `${wrongMemory[i]}: ${wrongMemoryValues[i]} (expected ${expectedMemory[wrongMemory[i]]})\n`;
         }
         alert(`Your solution is incorrect:\n${wrongText}`);
         return;
