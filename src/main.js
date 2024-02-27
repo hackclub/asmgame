@@ -97,10 +97,9 @@ var emulatorRegisters = new Proxy({
         return target[prop];
     }
 });
+window.emulatorRegisters = emulatorRegisters; // for debugging
 var emulatorMemory = [];
-for (var i = 0; i < 4096; i++) {
-    emulatorMemory.push(0);
-}
+window.emulatorMemory = emulatorMemory; // for debugging
 
 var isEscaped = false;
 document.getElementById('definitions').addEventListener('keydown', function(e) {
@@ -190,7 +189,8 @@ document.getElementById('run').addEventListener('click', ()=>{
             wrongRegistersValues.push(emulatorRegisters[register]);
         }
     }
-    for (var memory in expectedMemory) {
+    for (var memory in Object.keys(expectedMemory)) {
+        memory = expectedMemory[memory];
         if (emulatorMemory[memory] != expectedMemory[memory]) {
             if (!expectedMemory[memory] || expectedMemory[memory] == "*" || expectedMemory[memory] == undefined) {
                 continue;
