@@ -1,5 +1,41 @@
-#definitions {
-    font: monospace;
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: none;
+    padding: none;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+
+textarea {
+    font-family: "Roboto Mono", monospace;
+}
+
+#task-container {
+    margin: none;
+    padding: none;
+    border-width: 5px;
+    border-color: #a10000;
+    border-radius: 5px;
+    border-style: solid;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    height: fit-content;
+}
+
+.task-items {
+    width: fit-content;
+    float: right;
+    clear: both;
 }
 
 #hint {
@@ -8,4 +44,13 @@
 
 #hint-box[type="checkbox"]:checked ~ #hint {
     display: block;
+}
+
+textarea {
+    background-color: whitesmoke;
+    color: rgb(31, 31, 31);
+}
+
+#default-definitions {
+    cursor: not-allowed;
 }

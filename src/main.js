@@ -71,6 +71,7 @@ document.getElementById('puzzle').innerText = `Puzzle ${currentPuzzle+1}`;
 document.getElementById('definitions').value = localStorage.getItem("definitions") || `sw { # Write your swap instruction here!
 
 }`;
+document.getElementById('instruction-to-run').value = localStorage.getItem("instruction-to-run") || "sw";
 function updatePuzzleDOM() {
     document.getElementById('puzzle').innerText = `Puzzle ${currentPuzzle+1}`;
     document.getElementById('task').innerText = puzzles[currentPuzzle].task;
@@ -214,7 +215,11 @@ document.getElementById('run').addEventListener('click', ()=>{
     alert("Your solution is correct!");
     currentPuzzle++;
     localStorage.setItem("currentPuzzle", currentPuzzle);
-    localStorage.setItem("definitions", document.getElementById('definitions').value);
     updatePuzzleDOM();
 
 });
+
+setInterval(()=>{
+    localStorage.setItem("definitions", document.getElementById('definitions').value);
+    localStorage.setItem("instruction-to-run", document.getElementById('instruction-to-run').value);
+}, 60000); // save every minute

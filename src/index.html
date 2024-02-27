@@ -4,19 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Asmgame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="task">
-        Create an instruction to swap the A and B registers
-    </div>
-    <div id="puzzle">
-
-    </div>
-    <div id="hint-container">
-        <label for="hint-box">Hint: </label><input type="checkbox" name="hint-box" id="hint-box">
-        <div id="hint">
-            Use the la/lb instructions, the sa/sb instructions, and the wa/wb instructions.
+    <div id="task-container">
+        <div id="puzzle" class="task-items">
+        </div>
+        <div id="task" class="task-items">
+        </div>
+        <div id="hint-container" class="task-items">
+            <label for="hint-box">Hint: </label><input type="checkbox" name="hint-box" id="hint-box">
+            <div id="hint">
+            </div>
         </div>
     </div>
     Press escape to toggle focus in the textbox.<br>
