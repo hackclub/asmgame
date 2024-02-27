@@ -222,4 +222,4 @@ document.getElementById('run').addEventListener('click', ()=>{
 setInterval(()=>{
     localStorage.setItem("definitions", document.getElementById('definitions').value);
     localStorage.setItem("instruction-to-run", document.getElementById('instruction-to-run').value);
-}, 60000); // save every minute
+}, 1000); // save every second
