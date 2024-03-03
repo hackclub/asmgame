@@ -67,7 +67,7 @@ body {
 }
 
 #hint-box:checked ~ #hint {
-    display: block;
+    display: inline;
 }
 
 textarea {
