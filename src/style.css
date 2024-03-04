@@ -20,7 +20,7 @@ body {
     background-color: #333;
     padding: 10px 20px;
     display: flex;
-    justify-content: flex-end; /* Aligns the icon to the right */
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -163,7 +163,7 @@ label {
     background-color: #333;
     color: white;
     padding: 20px;
-    text-align: center; /* Center align the content */
+    text-align: center; 
 }
 
 .footer-content {
