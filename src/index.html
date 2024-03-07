@@ -7,21 +7,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/png" href="asm logo.png">
 </head>
 <body>
+    <nav class="navbar">
+        <a href="https://github.com/hackclub/asmgame" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+    </nav>
     <div id="task-container">
         <div id="puzzle" class="task-items">
         </div>
         <div id="task" class="task-items">
         </div>
         <div id="hint-container" class="task-items">
-            <label for="hint-box">Hint: </label><input type="checkbox" name="hint-box" id="hint-box">
+            <label for="hint-box">Hint: </label><input type="checkbox" name="hint-box" id="hint-box"><br>
             <div id="hint">
             </div>
         </div>
     </div>
-    Press escape to toggle focus in the textbox.<br>
+    <h2>Press escape to toggle focus in the textbox.</h2>
+    <div class="input-container">
+        <label for="instruction-to-run">Instruction to run: </label><input type="text" name="instruction-to-run" id="instruction-to-run" value="sw">
+        <button type="submit" id="run">Run</button>
+    </div>
     <textarea name="definitions" id="definitions" cols="30" rows="10" autocapitalize="off" autocomplete="off" autocorrect="off" aria-autocomplete="none" spellcheck="false">
 sw { # Write your swap instruction here!
 
@@ -58,8 +67,12 @@ ma { # set the A register to an arbitrary value
 # example of use of ma:
 # ma 5
     </textarea><br>
-    <label for="instruction-to-run">Instruction to run: </label><input type="text" name="instruction-to-run" id="instruction-to-run" value="sw">
-    <button type="submit" id="run">Run</button>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Asmgame. All rights reserved.</p>
+        </div>
+    </footer>
     <script type="module" src="main.js"></script>
 </body>
 </html>
