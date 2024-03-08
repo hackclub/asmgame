@@ -119,7 +119,7 @@ document.getElementById('run').addEventListener('click', ()=>{
     definitions = definitions.replaceAll(eighthJsonRegex, '"$1": [');
     definitions = JSON.parse(definitions);
     } catch (e) {
-        alert("Invalid code");
+        alert("Invalid code(likely cause is poor formatting, make sure that there isn't trailing space/newlines between lines or instructions)\nError: "+e);
         console.log(e);
         console.log(definitions);
         return;
