@@ -33,7 +33,7 @@ const internalInstructions = {
 };
 
 const request = new XMLHttpRequest();
-request.open('GET', 'puzzles.json', false);
+request.open('GET', './puzzles.json', false);
 const puzzles = JSON.parse(request.responseText);
 
 var currentPuzzle = parseInt(localStorage.getItem("currentPuzzle") || 0);
