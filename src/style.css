@@ -272,7 +272,7 @@ button {
 .btn-close {
     transform: translate(10px, -20px);
     padding: 0.5rem 0.7rem;
-    background-color: inherit;
+    background-color: #111;
     color: white;
     border-radius: 50%;
 }
