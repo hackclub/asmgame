@@ -262,7 +262,7 @@ button {
     display: inline-block;
     padding: 0.8rem 1.4rem;
     font-weight: 700;
-    background-color: black;
+    background-color: inherit;
     color: white;
     border-radius: 5px;
     text-align: center;
@@ -272,7 +272,8 @@ button {
 .btn-close {
     transform: translate(10px, -20px);
     padding: 0.5rem 0.7rem;
-    background: #eee;
+    background-color: inherit;
+    color: white;
     border-radius: 50%;
 }
 
