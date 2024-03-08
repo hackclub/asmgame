@@ -223,3 +223,27 @@ setInterval(()=>{
     localStorage.setItem("definitions", document.getElementById('definitions').value);
     localStorage.setItem("instruction-to-run", document.getElementById('instruction-to-run').value);
 }, 1000); // save every second
+
+const modal = document.querySelector(".modal");
+const overlay = document.querySelector(".overlay");
+const openModalBtn = document.querySelector(".btn-open");
+const closeModalBtn = document.querySelector(".btn-close");
+const openModal = function () {
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    modal.classList.add("visible");
+    overlay.classList.add("visible");
+};
+openModalBtn.addEventListener("click", openModal);
+const closeModal = function () {
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    modal.classList.remove("visible");
+    overlay.classList.remove("visible");
+};
+closeModalBtn.addEventListener("click", closeModal);
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.classList.contains("visible")) {
+        closeModal();
+    }
+});

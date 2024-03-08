@@ -14,6 +14,7 @@
 <body>
     <nav class="navbar">
         <a href="https://github.com/hackclub/asmgame" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+        <button class="btn btn-open info-icon"><i class="fas fa-info"></i></button>
     </nav>
     <div id="task-container">
         <div id="puzzle" class="task-items">
@@ -26,6 +27,23 @@
             </div>
         </div>
     </div>
+    <section class="modal hidden">
+        <div class="flex">
+            <button class="btn-close">⨉</button>
+        </div>
+        <div>
+            <h2>Reference</h2>
+            <p>
+                <h3>Registers</h3>
+                <ul>
+                    <li>A: A general purpose register. Controls the address accessed by the *A register.</li>
+                    <li>B: A general purpose register. No special attributes.</li>
+                    <li>*A: A register that when modified changes the value at the memory address of the A register(i.e. if A is 5, then accessing the *A register will access the memory address 5).</li>
+                </ul>
+            </p>
+        </div>
+    </section>
+    <div class="overlay hidden"></div>
     <h2>Press escape to toggle focus in the textbox.</h2>
     <div class="input-container">
         <label for="instruction-to-run">Instruction to run: </label><input type="text" name="instruction-to-run" id="instruction-to-run" value="sw">
