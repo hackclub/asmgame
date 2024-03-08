@@ -7,6 +7,6 @@ const registerWorker = async () => {
         console.error(`Registration failed with ${error}`);
       }
     }
-  };
-  
-  registerWorker();
+};
+
+registerWorker();
