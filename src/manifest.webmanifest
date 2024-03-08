@@ -3,7 +3,7 @@
     "name": "Asmgame",
     "icons": [
       {
-        "src": "icon.svg",
+        "src": "/asmgame/icon.svg",
         "type": "image/svg+xml",
         "sizes": "512x512"
       }
@@ -20,7 +20,7 @@
         "short_name": "Solve",
         "description": "Solve another puzzle in Asmgame",
         "url": "/",
-        "icons": [{ "src": "icon.svg", "sizes": "192x192" }]
+        "icons": [{ "src": "/asmgame/icon.svg", "sizes": "192x192" }]
       }
     ],
     "description": "Solve coding puzzles in Asmgame",
