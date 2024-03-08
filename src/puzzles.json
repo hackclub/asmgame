@@ -1,0 +1,38 @@
+[
+    {
+        "task": "Create an instruction to swap the A and B registers",
+        "hint": "Use the la/lb instructions, the sa/sb instructions, and the wa/wb instructions.",
+        "startingRegisters": {
+            "A": 5,
+            "B": 2,
+            "*A": 0,
+            "ACC": 0
+        },
+        "expectedEndingRegisters": {
+            "A": 2,
+            "B": 5,
+            "*A": "*",
+            "ACC": "*"
+        },
+        "expectedMemory": {}
+    },
+    {
+        "task": "Create an instruction to write the value of the A register to the memory address stored in the B register",
+        "hint": "Use the sw instruction, the lb instruction, and the ss instruction.",
+        "startingRegisters": {
+            "A": 5,
+            "B": 2,
+            "*A": 0,
+            "ACC": 0
+        },
+        "expectedEndingRegisters": {
+            "A": "*",
+            "B": "*",
+            "*A": "*",
+            "ACC": "*"
+        },
+        "expectedMemory": {
+            "2": 5
+        }
+    }
+]

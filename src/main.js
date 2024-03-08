@@ -28,44 +28,10 @@ const internalInstructions = {
     }
 };
 
-const puzzles = [
-    {
-        task: "Create an instruction to swap the A and B registers",
-        hint: "Use the la/lb instructions, the sa/sb instructions, and the wa/wb instructions.",
-        startingRegisters: {
-            "A": 0x5,
-            "B": 0x2,
-            "*A": 0x0,
-            "ACC": 0x0
-        },
-        expectedEndingRegisters: {
-            "A": 0x2,
-            "B": 0x5,
-            "*A": "*",
-            "ACC": "*"
-        },
-        expectedMemory: {}
-    },
-    {
-        task: "Create an instruction to write the value of the A register to the memory address stored in the B register",
-        hint: "Use the sw instruction, the lb instruction, and the ss instruction.",
-        startingRegisters: {
-            "A": 0x5,
-            "B": 0x2,
-            "*A": 0x0,
-            "ACC": 0x0
-        },
-        expectedEndingRegisters: {
-            "A": "*",
-            "B": "*",
-            "*A": "*",
-            "ACC": "*"
-        },
-        expectedMemory: {
-            0x2: 0x5
-        }
-    }
-];
+const request = new XMLHttpRequest();
+request.open('GET', 'puzzles.json', false);
+const puzzles = JSON.parse(request.responseText);
+
 var currentPuzzle = parseInt(localStorage.getItem("currentPuzzle") || 0);
 document.getElementById('puzzle').innerText = `Puzzle ${currentPuzzle+1}`;
 document.getElementById('definitions').value = localStorage.getItem("definitions") || `sw { # Write your swap instruction here!
@@ -192,7 +158,7 @@ document.getElementById('run').addEventListener('click', ()=>{
     }
     for (var memory in Object.keys(expectedMemory)) {
         memory = expectedMemory[memory];
-        if (emulatorMemory[memory] != expectedMemory[memory]) {
+        if (emulatorMemory[parseInt(memory, 16)] != expectedMemory[memory]) {
             if (!expectedMemory[memory] || expectedMemory[memory] == "*" || expectedMemory[memory] == undefined) {
                 continue;
             }
