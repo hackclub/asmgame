@@ -1,0 +1,28 @@
+{
+    "short_name": "Asmgame",
+    "name": "Asmgame",
+    "icons": [
+      {
+        "src": "icon.svg",
+        "type": "image/svg+xml",
+        "sizes": "512x512"
+      }
+    ],
+    "id": "/",
+    "start_url": "/",
+    "background_color": "#121212",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#B20000",
+    "shortcuts": [
+      {
+        "name": "Solve another puzzle",
+        "short_name": "Solve",
+        "description": "Solve another puzzle in Asmgame",
+        "url": "/",
+        "icons": [{ "src": "icon.svg", "sizes": "192x192" }]
+      }
+    ],
+    "description": "Solve coding puzzles in Asmgame",
+    "screenshots": []
+  }

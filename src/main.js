@@ -1,3 +1,5 @@
+importScripts('sw-register.js');
+
 window.onerror = function(event, source, lineno, colno, error) {
     alert("An error occurred: " + error);
 }
