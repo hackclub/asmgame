@@ -17,8 +17,27 @@
         "expectedMemory": {}
     },
     {
+        "task": "Create an instruction to write the value of the D register to the memory address stored in the A register",
+        "hint": "Use the the lb instruction and the ss instruction.",
+        "startingRegisters": {
+            "A": 2,
+            "B": 5,
+            "*A": 0,
+            "ACC": 0
+        },
+        "expectedEndingRegisters": {
+            "A": "*",
+            "B": "*",
+            "*A": "*",
+            "ACC": "*"
+        },
+        "expectedMemory": {
+            "2": 5
+        }
+    },
+    {
         "task": "Create an instruction to write the value of the A register to the memory address stored in the B register",
-        "hint": "Use the sw instruction, the lb instruction, and the ss instruction.",
+        "hint": "Use the sw instruction and the previous instruction.",
         "startingRegisters": {
             "A": 5,
             "B": 2,

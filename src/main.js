@@ -27,9 +27,6 @@ const internalInstructions = {
     },
     "wb": ()=>{
         emulatorRegisters.A = emulatorRegisters.B;
-    },
-    "ma": (value) => {
-        emulatorRegisters.A = parseInt(value);
     }
 };
 
