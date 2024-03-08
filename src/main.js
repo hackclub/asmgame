@@ -157,14 +157,14 @@ document.getElementById('run').addEventListener('click', ()=>{
         }
     }
     for (var memory in Object.keys(expectedMemory)) {
-        memory = expectedMemory[memory];
-        if (emulatorMemory[parseInt(memory, 16)] != expectedMemory[memory]) {
-            if (!expectedMemory[memory] || expectedMemory[memory] == "*" || expectedMemory[memory] == undefined) {
+        var realMemory = expectedMemory[memory];
+        if (emulatorMemory[parseInt(memory, 16)] != realMemory) {
+            if (!realMemory || realMemory == "*" || realMemory == undefined) {
                 continue;
             }
             correct = false;
             wrongMemory.push(`Memory address ${memory}`);
-            wrongMemoryValues.push(emulatorMemory[memory]);
+            wrongMemoryValues.push(emulatorMemory[parseInt(memory, 16)]);
         }
     }
     if (!correct) {
