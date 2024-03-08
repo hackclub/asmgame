@@ -25,7 +25,18 @@
         "short_name": "Solve",
         "description": "Solve another puzzle in Asmgame",
         "url": "/",
-        "icons": [{ "src": "/asmgame/icon.svg", "sizes": "192x192" }]
+        "icons": [
+          {
+            "src": "/asmgame/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "192x192"
+          },
+          {
+            "src": "/asmgame/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "512x512"
+          }
+        ]
       }
     ],
     "description": "Solve coding puzzles in Asmgame",
