@@ -1,5 +1,5 @@
-document.onerror = function(ev) {
-    alert("An error occurred: " + ev.message);
+window.onerror = function(event, source, lineno, colno, error) {
+    alert("An error occurred: " + error);
 }
 
 const internalInstructions = {
