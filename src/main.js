@@ -1,3 +1,7 @@
+document.onerror = function(ev) {
+    alert("An error occurred: " + ev.message);
+}
+
 const internalInstructions = {
     "la": ()=>{
         emulatorRegisters.ACC = emulatorRegisters.A;
