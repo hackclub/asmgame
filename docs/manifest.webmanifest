@@ -60,5 +60,11 @@
       }
     ],
     "description": "Solve coding puzzles in Asmgame",
-    "screenshots": []
+    "screenshots": [
+      {
+        "src": "/asmgame/screenshot1.png",
+        "type": "image/png",
+        "sizes": "1365x646"
+      }
+    ]
   }
