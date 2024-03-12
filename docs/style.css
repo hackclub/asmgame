@@ -1,7 +1,7 @@
 :root{
     --primary-color: #b20000;
     --secondary-color: #1e1e1e;
-    --text-color: #ffffff;
+    --text-color: #ededed;
 }
 
 * {
@@ -298,4 +298,12 @@ button {
     opacity: 1;
     display: block;
     transition: opacity 0.3s ease;
+}
+
+code {
+    font-family: monospace;
+}
+
+.modal > div > p {
+    color: var(--text-color);
 }
